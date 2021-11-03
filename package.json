@@ -1,0 +1,26 @@
+{
+    "name": "livechat",
+    "version": "1.0.0",
+    "description": "a full live chat with socket.io in node.js",
+    "main": "index.js",
+    "scripts": {
+        "start": "node src/index.js",
+        "test": "jest /tests",
+        "build": "npx babel-node --presets @babel/preset-env index.js"
+    },
+    "repository": "https://github.com/guilherme-ciano/livechat",
+    "author": "@Guilherme-Ciano",
+    "license": "MIT",
+    "private": false,
+    "devDependencies": {
+        "@babel/cli": "^7.16.0",
+        "@babel/core": "^7.16.0",
+        "@babel/preset-env": "^7.16.0",
+        "cors": "^2.8.5",
+        "ejs": "^3.1.6",
+        "express": "^4.17.1",
+        "jest": "^27.3.1",
+        "nodemon": "^2.0.14",
+        "socket.io": "^4.3.1"
+    }
+}
