@@ -1,3 +1,4 @@
+const { v4: uuidV4 } = require('uuid')
 const express = require('express')
 const path = require('path')
 const app = express()
@@ -10,18 +11,35 @@ app.set('views', path.join(__dirname, 'public'))
 app.engine('html', require('ejs').renderFile)
 app.set('view engine', 'html')
 
-app.use('/', (req, res) => {
+app.get('/live/', (req, res) => {
+    res.redirect(`/live/${uuidV4()}`)
+})
+
+app.get('/live/:room', (req, res) => {
+    res.render('room', { roomId: req.params.room })
+})
+
+app.use('/chat', (req, res) => {
     res.render('index.html')
 })
 
 let messages = []
 
 io.on('connection', (socket) => {
-    console.log(`Socket conectado: ${socket.id}`)
     socket.emit('previousMessages', messages)
     socket.on('sendMessage', (data) => {
         messages.push(data)
         socket.broadcast.emit('receivedMessage', data)
+    })
+
+    socket.on('join-room', (roomId, userId) => {
+        socket.join(roomId)
+        socket.to(roomId).broadcast.emit('Usuario-conectado', userId)
+        console.log(roomId, userId)
+
+        socket.on('disconect', () => {
+            socket.to(roomId).broadcast.emit('user-disconected', userId)
+        })
     })
 })
 
