@@ -12,6 +12,10 @@
     "author": "@Guilherme-Ciano",
     "license": "MIT",
     "private": false,
+    "engines": {
+        "npm": ">=6.0.0",
+        "node": ">=10.0.0"
+    },
     "devDependencies": {
         "@babel/cli": "^7.16.0",
         "@babel/core": "^7.16.0",
