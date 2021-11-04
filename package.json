@@ -6,7 +6,7 @@
     "scripts": {
         "start": "node src/index.js",
         "test": "jest /tests",
-        "build": "npx babel-node --presets @babel/preset-env index.js"
+        "build": "mkdir dist && babel src -s -d dist"
     },
     "repository": "https://github.com/guilherme-ciano/livechat",
     "author": "@Guilherme-Ciano",
