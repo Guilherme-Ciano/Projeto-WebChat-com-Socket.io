@@ -6,7 +6,7 @@
     "scripts": {
         "start": "node src/index.js",
         "test": "jest /tests",
-        "build": "rm -r dist && mkdir dist && babel src --copy-files -s -d dist "
+        "build": "mkdir dist && babel src --copy-files -s -d dist "
     },
     "repository": "https://github.com/guilherme-ciano/livechat",
     "author": "@Guilherme-Ciano",
